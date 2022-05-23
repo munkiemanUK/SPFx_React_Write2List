@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "react-write-2-list-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/reactWrite2List/ReactWrite2ListWebPart.js",
+          "manifest": "./src/webparts/reactWrite2List/ReactWrite2ListWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ReactWrite2ListWebPartStrings": "lib/webparts/reactWrite2List/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}

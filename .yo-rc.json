@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.14.0",
+    "libraryName": "sp-fx-react-write-2-list",
+    "libraryId": "741a59ab-9c7a-464f-832e-1c51213bf4cd",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "sp-fx-react-write-2-list",
+    "solutionShortDescription": "sp-fx-react-write-2-list description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
