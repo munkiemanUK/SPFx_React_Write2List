@@ -34,7 +34,7 @@ export default class ReactWrite2List extends React.Component<IReactWrite2ListPro
   }
 
   private async _gettags() {
-    const item: any = await sp.web.lists.getByTitle("Test_Metadata").items.getById(1).get();
+    const item: any = await sp.web.lists.getByTitle("HandS_WPI_Forms").items.getById(1).get();
     let selectedtags: any = [];
     item.Tags.forEach(function (v: any[], i) {
       selectedtags.push({ key: v["TermGuid"], name: v["Label"] })
@@ -55,10 +55,10 @@ export default class ReactWrite2List extends React.Component<IReactWrite2ListPro
       'TermGuid': terms[0].key,
       'WssId': '-1'
     };
-    alert('data written ' + terms[0].key);
+    alert('data written to ID:6152 ' + terms[0].key);
     //termLabel=terms[0].name;
 
-    return await sp.web.lists.getByTitle("Test_Metadata").items.getById(4).update({Title: terms[0].name});
+    return await sp.web.lists.getByTitle("HandS_WPI_Forms").items.getById(6152).update({Division: terms[0].name});
     //return (await sp.web.lists.getByTitle("Test_Metadata").items.add({Title: termLabel}))
   }  
 
