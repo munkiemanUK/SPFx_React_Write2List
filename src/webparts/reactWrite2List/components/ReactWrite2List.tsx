@@ -33,18 +33,6 @@ export default class ReactWrite2List extends React.Component<IReactWrite2ListPro
     };
   }
 
-  private async _gettags() {
-    const item: any = await sp.web.lists.getByTitle("HandS_WPI_Forms").items.getById(1).get();
-    let selectedtags: any = [];
-    item.Tags.forEach(function (v: any[], i) {
-      selectedtags.push({ key: v["TermGuid"], name: v["Label"] })
-    });
-    console.log(item);
-    this.setState({
-      tags: selectedtags
-    });
-  }
-
   public async onDivisionTaxPickerChange(terms: IPickerTerms): Promise<any> {
     const data = {};
     //let termLabel:string="";
@@ -55,10 +43,23 @@ export default class ReactWrite2List extends React.Component<IReactWrite2ListPro
       'TermGuid': terms[0].key,
       'WssId': '-1'
     };
-    alert('data written to ID:6152 ' + terms[0].key);
+    //alert('updated Divsion with: '+terms[0].name+' WPI ID='+this.state.ItemID);
+
+    const item: any = await sp.web.lists.getByTitle("WPI_TopSection").items.getById(2).get();
+    alert("title="+item.Title);
+    //termLabel=terms[0].name;
+    if(item.Title == ""){
+      alert('data written ' + terms[0].key);
+      return (await sp.web.lists.getByTitle("WPI_TopSection").items.add({Title: terms[0].name}));
+    } else {
+      alert('data updated ' + terms[0].key);
+      return await sp.web.lists.getByTitle("WPI_TopSection").items.getById(2).update({WPI_ID: 6000,Title: terms[0].name});
+    }
+
+    //alert('data written to ID:6152 ' + terms[0].key);
     //termLabel=terms[0].name;
 
-    return await sp.web.lists.getByTitle("HandS_WPI_Forms").items.getById(6152).update({Division: terms[0].name});
+    //return await sp.web.lists.getByTitle("HandS_WPI_Forms").items.getById(6152).update({Division: terms[0].name});
     //return (await sp.web.lists.getByTitle("Test_Metadata").items.add({Title: termLabel}))
   }  
 
