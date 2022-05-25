@@ -33,7 +33,7 @@ export default class ReactWrite2List extends React.Component<IReactWrite2ListPro
     };
   }
 
-  public async onDivisionTaxPickerChange(terms: IPickerTerms): Promise<any> {
+  public async onTaxPickerChange(terms: IPickerTerms): Promise<any> {
     const data = {};
     //let termLabel:string="";
 
@@ -45,15 +45,15 @@ export default class ReactWrite2List extends React.Component<IReactWrite2ListPro
     };
     //alert('updated Divsion with: '+terms[0].name+' WPI ID='+this.state.ItemID);
 
-    const item: any = await sp.web.lists.getByTitle("WPI_TopSection").items.getById(2).get();
+    const item: any = await sp.web.lists.getByTitle("HandS_WPI_Forms").items.getById(4).get();
     alert("title="+item.Title);
     //termLabel=terms[0].name;
     if(item.Title == ""){
-      alert('data written ' + terms[0].key);
-      return (await sp.web.lists.getByTitle("WPI_TopSection").items.add({Title: terms[0].name}));
+      alert('data written ' + terms[0].name);
+      return (await sp.web.lists.getByTitle("HandS_WPI_Forms").items.add({Office: terms[0].name}));
     } else {
-      alert('data updated ' + terms[0].key);
-      return await sp.web.lists.getByTitle("WPI_TopSection").items.getById(2).update({WPI_ID: 6000,Title: terms[0].name});
+      alert('data updated ' + terms[0].name);
+      return await sp.web.lists.getByTitle("HandS_WPI_Forms").items.getById(4).update({Office: terms[0].name});
     }
 
     //alert('data written to ID:6152 ' + terms[0].key);
@@ -84,11 +84,11 @@ export default class ReactWrite2List extends React.Component<IReactWrite2ListPro
         <div>
           <TaxonomyPicker allowMultipleSelections={false}
             initialValues={this.state.tags}
-            termsetNameOrID="Divisions"
-            panelTitle="Select Division"
-            label="Division"
+            termsetNameOrID="b8ab6fd6-38e9-4ac8-ba86-d07bf4ec530f"
+            panelTitle="Select Term"
+            label="Terms"
             context={this.props.context}
-            onChange={this.onDivisionTaxPickerChange}
+            onChange={this.onTaxPickerChange}
             isTermSetSelectable={false} />
         </div>  
         <div>
